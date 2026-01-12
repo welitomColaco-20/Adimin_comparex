@@ -1,30 +1,15 @@
-const form = document.getElementById("productForm");
-const msg = document.getElementById("msg");
+let produtos = [];
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+fetch("products.json")
+  .then(res => res.json())
+  .then(data => produtos = data);
 
-  const product = {
-    title: title.value,
-    price: price.value,
-    image: image.value,
-    affiliate_link: affiliate_link.value,
-    platform: "AliExpress"
-  };
+function buscarProdutos() {
+  const termo = search.value.toLowerCase();
 
-  const res = await fetch(
-    "https://back-end-comparex.onrender.com/products",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(product)
-    }
+  const filtrados = produtos.filter(p =>
+    p.title.toLowerCase().includes(termo)
   );
 
-  if (res.ok) {
-    msg.innerText = "Produto cadastrado com sucesso!";
-    form.reset();
-  } else {
-    msg.innerText = "Erro ao cadastrar produto";
-  }
-});
+  renderProducts(filtrados);
+}
