@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Adicionar Produto</h1>
+
+  <form id="productForm">
+    <input type="text" placeholder="Título do produto" id="title" required />
+    <input type="number" placeholder="Preço" id="price" required />
+    <input type="text" placeholder="URL da imagem" id="image" required />
+    <input type="text" placeholder="Link afiliado" id="affiliate_link" required />
+    <button type="submit">Salvar Produto</button>
+  </form>
+
+  <p id="msg"></p>
+
+  <script src="admin.js"></script>
+</body>
+</html>
